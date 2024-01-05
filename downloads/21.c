@@ -1,6 +1,9 @@
 #include <stdio.h>
-void main()
+int main()
 {
- /* 印出 Hello */
-printf("Hello World!");
+/* 印出 Hello World! Bye Bye */
+printf("Hello World! ");
+printf("Bye ");
+printf("Bye");
+return 0;
 }
