@@ -131,7 +131,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li><a href='w16.html'>w16</a><li class='has-children'><a href='C_ex.html'>C_ex</a><ul class='dropdown'><li><a href='ex1.html'>ex1</a><li><a href='ex2.html'>ex2</a></li></ul><li><a href='Brython.html'>Brython</a></li>
+                     <li><a href='About.html'>About</a><li><a href='w5.html'>w5</a><li><a href='w6.html'>w6</a><li><a href='w7.html'>w7</a><li><a href='w12.html'>w12</a><li><a href='w13.html'>w13</a><li><a href='w15.html'>w15</a><li><a href='w16.html'>w16</a><li class='has-children'><a href='C_ex.html'>C_ex</a><ul class='dropdown'><li><a href='Class 1.html'>Class 1</a><li><a href='Ex 1.html'>Ex 1</a></li></ul><li><a href='Brython.html'>Brython</a></li>
                       </ul>
                 </nav>
               </div>
@@ -142,64 +142,296 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">C_ex << <a href='C_ex.html'>Previous</a> <a href='ex2.html'>Next</a> >> ex2<br /><h1>ex1</h1>
-<p><span>1.</span><span>Hello World</span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-void main()
+    <div id="tipue_search_content">Class 1 << <a href='Class 1.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython<br /><h1>Ex 1</h1>
+<p>1.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* =========================
+ struct – 3.
+========================= */
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+ 
+/* ====================
+ struct Mouse.
+==================== */
+struct Mouse
 {
- /* 印出 Hello */
-printf("Hello World!");
-}</pre>
-<p><img src="https://41223201.github.io/cp2023/images/21.png"/></p>
-<p>2.Say Hello World! Bye Bye</p>
-<div>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+    int xPos, yPos;
+    char Name[10];
+};
+ 
+/* ====================
+ Copy Mouse 1
+==================== */
+void cpyMouse1(struct Mouse *tgt, struct Mouse *src)
+{
+    tgt-&gt;xPos = src-&gt;xPos;
+    tgt-&gt;yPos = src-&gt;yPos;
+    strcpy(tgt-&gt;Name, src-&gt;Name);
+}
+ 
+/* ====================
+ main function.
+==================== */
 int main()
 {
-/* 印出 Hello World! Bye Bye */
-printf("Hello World! ");
-printf("Bye ");
-printf("Bye");
+    struct Mouse myMouse, yourMouse;
+ 
+    yourMouse.xPos = 10;
+    yourMouse.yPos = 20;
+    strcpy(yourMouse.Name, "Mickey");
+ 
+    cpyMouse1(&amp;myMouse, &amp;yourMouse);
+ 
+    printf("Name: %s, X: %d, Y: %d\n", myMouse.Name, myMouse.xPos, myMouse.yPos);
+ 
+    return 0;
+}</pre>
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20214058.png"/></p>
+<p>2.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* =========================
+ #define 的範例 2.
+========================= */
+#include &lt;stdio.h&gt;
+ 
+#define TRUE 1
+#define FALSE 0
+#define BOOL int
+ 
+/* ====================
+如果傳入值大於 10, 則傳回 TRUE
+==================== */
+BOOL is_greater_than_10(int i)
+{
+    if (i &gt; 10)
+        return TRUE;
+    else
+        return FALSE;
+}
+ 
+/* ====================
+ main function.
+==================== */
+int main()
+{
+    int i;
+    BOOL result;
+ 
+    printf("Input a number: ");
+ 
+    // 檢查 scanf 的返回值
+    if (scanf("%d", &amp;i) != 1) {
+        printf("Error reading input.\n");
+        return 1;  // 返回非零值表示錯誤
+    }
+ 
+    result = is_greater_than_10(i);
+ 
+    if (result == TRUE)
+        printf("Greater than 10!\n"); /* 大於 10 */
+    else
+        printf("Not greater than 10!\n"); /* 不大於 10 */
+ 
+    return 0;
+}</pre>
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20214634.png"/></p>
+<p>3.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ &amp; operator.
+==================== */
+#include &lt;stdio.h&gt;
+ 
+int main()
+{
+    int *pointer_a, a;
+    pointer_a = &amp;a;
+    a = 10;
+ 
+    printf("%d, %d\n", a, *pointer_a);
+ 
+    return 0;
+}</pre>
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20214957.png"/></p>
+<p>4.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+pointer – 6
+==================== */
+#include &lt;stdio.h&gt;
+ 
+int main()
+{
+char *str = "Eric";
+ 
+printf("%c\n", *(str + 0)); /* 也可寫 printf("%c", str[0] ); */
+printf("%c\n", *(str + 1)); /* 也可寫 printf("%c", str[1] ); */
+printf("%c\n", *(str + 2)); /* 也可寫 printf("%c", str[2] ); */
+printf("%c\n", *(str + 3)); /* 也可寫 printf("%c", str[3] ); */
+ 
 return 0;
 }</pre>
-<p><span><img src="https://41223201.github.io/cp2023/images/22.png"/></span></p>
-<p><span>3.變數宣告的例子</span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20215200.png"/></p>
+<p>5.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ 2d array.
+==================== */
+#include &lt;stdio.h&gt;
+ 
 int main()
 {
-int a = 1;
-int A = 8;
-int b = 2, c;
-c = A - a + b;
-/* 輸出 a, A, b, c 到螢幕 */
-printf( "a = %d, A = %d, b = %d, c = %d ", a, A, b, c );
-return 0;
+    int array[3][3];
+    int x, y;
+ 
+    array[0][0] = 1;
+    array[0][1] = 2;
+    array[0][2] = 3;
+    array[1][0] = 4;
+    array[1][1] = 5;
+    array[1][2] = 6;
+    array[2][0] = 7;
+    array[2][1] = 8;
+    array[2][2] = 9;
+ 
+    for (x = 0; x &lt; 3; x++)
+    {
+        for (y = 0; y &lt; 3; y++)
+        {
+            printf("%d,", array[x][y]);
+        }
+    }
+ 
+    return 0;
 }</pre>
-<p><img src="https://41223201.github.io/cp2023/images/23.png"/></p>
-<p><span>4.浮點運算的程式範例</span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
-void main()
-{
-float a = 0.5;
-double b = 1.2;
-int c = 3;
-b = b + a + c;
-/* 輸出 a, b, c 到螢幕 */
-printf( " a = %3.1f, b = %3.1f, c = %d ", a ,b, c );
-}</pre>
-<p><img src="https://41223201.github.io/cp2023/images/24.png"/></p>
-<p><span>5.字元範例 </span></p>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">#include &lt;stdio.h&gt;
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20215420.png"/></p>
+<p>6.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ array - 1.
+==================== */
+#include &lt;stdio.h&gt;
+ 
 int main()
 {
-char x, y;
-x = 'a';
-y = (char)97;
-/* 輸出 x, y, x, 最後一個是以 ASCII 值顯示 y */
-printf( " x = %c, y = %c, ASCII of y = %d", x, y, y );
-return</pre>
-<p><img src="https://41223201.github.io/cp2023/images/25.png"/></p>
-</div><br />C_ex << <a href='C_ex.html'>Previous</a> <a href='ex2.html'>Next</a> >> ex2</div>
+    int grade[5]; /* size = 5 的 array */
+    int i;
+ 
+    grade[0] = 75; /* 1st element */
+    grade[1] = 80; /* 2nd element */
+    grade[2] = 85; /* 3rd element */
+    grade[3] = 70; /* 4th element */
+    grade[4] = 90; /* 5th element */
+ 
+    for (i = 0; i &lt; 5; i++)
+    {
+        printf("Number %d = %d\n", i, grade[i]);
+    }
+ 
+    return 0;
+}</pre>
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20215646.png"/></p>
+<p>7.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ do - while.
+==================== */
+#include &lt;stdio.h&gt;
+ 
+int main()
+{
+    int i, j;
+    i = 0;
+    j = 10; /* 迴圈外先設定初值 */
+ 
+    do
+    {
+        printf("i = %d, ", i);
+        printf("j = %d\n", j);
+        i++;
+        j++;
+    } while (i &lt; 6); /* 檢查條件的地方 */
+ 
+    return 0;
+}</pre>
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20215859.png"/></p>
+<p>8.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+99 乘法.
+==================== */
+#include &lt;stdio.h&gt;
+ 
+int main()
+{
+    int x, y;
+ 
+    for (x = 1; x &lt;= 9; x++)
+    {
+        for (y = 1; y &lt;= 9; y++)
+        {
+            printf("%2d ", x * y);  /* 使用 %2d 以確保數字的對齊性 */
+        }
+        printf("\n");
+    }
+ 
+    return 0;
+}</pre>
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20220142.png"/></p>
+<p>9.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+ Program "continue"
+ ==================== */
+#include &lt;stdio.h&gt;
+ 
+int main()
+{
+    int i;
+ 
+    for (i = 0; i &lt; 10; i++)
+    {
+        if ((i == 1) || (i == 2) || (i == 3))
+        {
+            continue; /* 忽略以後的 program, 回到 for. */
+        }
+        printf("i = %d\n", i);
+    }
+ 
+    return 0;
+}</pre>
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20220424.png"/></p>
+<p>10.</p>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/* ====================
+switch - case 的範例 3.
+==================== */
+#include &lt;stdio.h&gt;
+ 
+int main()
+{
+    char c;
+ 
+    printf("Input a char: ");
+ 
+    // 檢查 scanf 的返回值
+    if (scanf("%c", &amp;c) != 1)
+    {
+        printf("Error reading input.\n");
+        return 1; // 返回非零值表示錯誤
+    }
+ 
+    switch (c)
+    {
+    case 'a':
+        printf("You pressed a\n");
+        break;
+    case 'b':
+        printf("You pressed b\n");
+        break;
+    case 'c':
+        printf("You pressed c\n");
+        break;
+    default:
+        printf("Unrecognized input\n");
+        break;
+    }
+ 
+    return 0;
+}</pre>
+<p><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20220743.png"/><img src="https://leeshaowei0716.github.io/cp2023/images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202023-12-27%20220743.png"/></p>
+<div class="line number1 index0 alt2"><code class="cpp comments"></code></div><br />Class 1 << <a href='Class 1.html'>Previous</a> <a href='Brython.html'>Next</a> >> Brython</div>
         
     <!-- footer -->
       <div class="container">
